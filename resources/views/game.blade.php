@@ -1,5 +1,5 @@
 <body>
-        <form method="post" action="{{ url('resultado') }}">
+        <form method="get" action="{{ url('game') }}">
             @csrf
             <label>Elige número:</label>
             <input name='num' type='text' maxlength="3"  required><br>
