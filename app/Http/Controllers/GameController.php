@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Game;
-
+ 
 class GameController extends Controller
 {
+    private $eleccion = 0;
     /**
      * Display a listing of the resource.
      */
@@ -87,10 +88,12 @@ class GameController extends Controller
         return $resultado;
     }
     public function game(Request $request){
-        $numerosecreto=rand(1,100);
-        $resultado = self::comprobar($request->num,$numerosecreto);
+        if ($this-> eleccion == 0){
+            $this -> eleccion = rand(1,100);
+        } 
+        $resultado = self::comprobar($request->num,$this -> eleccion);
 
-        return  view('result',["numCpu" => $numerosecreto, "numUser" => $request->num, "result" => $resultado]);
+        return  view('result',["numCpu" => $this -> eleccion, "numUser" => $request->num, "result" => $resultado]);
 
     }
     public function volver()
