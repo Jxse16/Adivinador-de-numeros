@@ -7,7 +7,6 @@ use App\Models\Game;
  
 class GameController extends Controller
 {
-    private $eleccion = 0;
     /**
      * Display a listing of the resource.
      */
@@ -87,17 +86,18 @@ class GameController extends Controller
 
         return $resultado;
     }
-    public function game(Request $request){
-        if ($this-> eleccion == 0){
-            $this -> eleccion = rand(1,100);
-        } 
-        $resultado = self::comprobar($request->num,$this -> eleccion);
+    public function game(Request $request, int $numCpu = 0, int $numIntentos = 0){
+        if ($numCpu == 0) $numCpu = rand(1,100);
+        $resultado = self::comprobar($request->num,$numCpu);
 
-        return  view('result',["numCpu" => $this -> eleccion, "numUser" => $request->num, "result" => $resultado]);
+        return  view('result',["numCpu" => $numCpu, "numUser" => $request->num, "result" => $resultado, "numIntentos" => $numIntentos]);
 
     }
-    public function volver()
+    public function volver(Request $request)
     {
+        
         return view('game');
     }
+
+
 }

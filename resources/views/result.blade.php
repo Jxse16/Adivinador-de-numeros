@@ -15,7 +15,10 @@
     @isset($result[1])
         <br>{{$result[1]}}
     @endisset
-   <br> <a href="{{ url('volver') }}">try again</a>
+    <form method="get" action="{{ url('choose') }}">
+        @csrf
+        <button type="submit" name="user" value="{{$user->id}}">Volver a jugar</button>
+    </form>
     </p>
 </body>
 </html>
