@@ -12,7 +12,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -92,7 +92,9 @@ class GameController extends Controller
 
         return  view('result',["numCpu" => $numerosecreto, "numUser" => $request->num, "result" => $resultado]);
 
-
-
+    }
+    public function volver()
+    {
+        return view('game');
     }
 }

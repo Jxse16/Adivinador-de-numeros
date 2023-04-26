@@ -11,10 +11,11 @@
 
     <p>El usuario ha escogido {{$numUser}}</p>
     <p>La CPU ha escogido {{$numCpu}}</p>
-    <p>El resultado es: {{$result[0]}}
+    <p>El resultado es: {{$result[0]}} 
     @isset($result[1])
         <br>{{$result[1]}}
     @endisset
+   <br> <a href="{{ url('volver') }}">try again</a>
     </p>
 </body>
 </html>

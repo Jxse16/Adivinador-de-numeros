@@ -23,3 +23,4 @@ Route::get('/elige', function () {
 });
 
 Route::get('game',[GameController::class, 'game']);
+Route::get('volver', [GameController::class,'volver']);
