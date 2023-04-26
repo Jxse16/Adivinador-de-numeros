@@ -62,4 +62,8 @@ class GameController extends Controller
     {
         //
     }
+    public function game(){
+        $numerosecreto=rand(1,100);
+        return view('juego');
+    }
 }
