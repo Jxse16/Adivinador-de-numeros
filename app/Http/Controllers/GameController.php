@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\GameController as ControllersGameController;
+use App\Models\Game;
 use Illuminate\Http\Request;
  
 class GameController extends Controller
@@ -13,7 +14,8 @@ class GameController extends Controller
      */
     public function index()
     {
-
+        $games = Game::all();
+        return view('index',['games'=> $games]);
     }
 
     /**
@@ -69,7 +71,7 @@ class GameController extends Controller
         $resultado = [];
         if ($numUser == $numCpu)
         {
-            $resultado[0] = "El número es el mismo";
+            $resultado[0] = "Win";
         } else 
         {
             if ($numUser < $numCpu)
@@ -91,8 +93,22 @@ class GameController extends Controller
         $numIntentos = $request->numIntentos;
         $numCpu = $request->numCpu;
         $numIntentos++;
+
         if ($numCpu == 0) $numCpu = rand(1,100);
         $resultado = self::comprobar($request->num,$numCpu);
+
+        if ($resultado[0] == 'Win' ){
+            Game::create([ 
+                
+                "tries" => $numIntentos,
+                "machine_choice" => $numCpu
+            ]);
+            return view( 'win',
+            [
+            "numIntentos" =>  $numIntentos
+            ]);
+        }
+
         return  response(
             view('result',
             ["numCpu" => $numCpu,

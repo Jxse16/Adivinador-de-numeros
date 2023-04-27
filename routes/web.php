@@ -22,3 +22,4 @@ Route::get('elige',[GameController::class, 'elige']);
 
 Route::get('game',[GameController::class, 'game']);
 Route::get('volver', [GameController::class,'volver']);
+Route::get('index', [GameController::class,'index']);

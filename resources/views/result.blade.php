@@ -10,7 +10,6 @@
     <h1>Resultado</h1>
 
     <p>El usuario ha escogido {{$numUser}}</p>
-    <p>La CPU ha escogido {{$numCpu}}</p>
     <p>num Intentos = {{$numIntentos}}</p>
     <p>El resultado es: {{$result[0]}} 
     @isset($result[1])
@@ -20,7 +19,7 @@
         @csrf
         <input hidden name="numIntentos" value="{{$numIntentos}}">
         <input hidden name="numCpu" value="{{$numCpu}}">
-        <button type="submit">Volver a jugar</button>
+        <button type="submit">Reintentar</button>
     </form>
     </p>
 </body>
