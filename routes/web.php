@@ -18,9 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/elige', function () {
-    return view('game');
-});
+Route::get('elige',[GameController::class, 'elige']);
 
 Route::get('game',[GameController::class, 'game']);
 Route::get('volver', [GameController::class,'volver']);

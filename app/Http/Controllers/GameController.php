@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\GameController as ControllersGameController;
 use Illuminate\Http\Request;
-use App\Models\Game;
  
 class GameController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      */
@@ -86,17 +87,28 @@ class GameController extends Controller
 
         return $resultado;
     }
-    public function game(Request $request, int $numCpu = 0, int $numIntentos = 0){
+    public function game(Request $request){
+        $numIntentos = $request->numIntentos;
+        $numCpu = $request->numCpu;
+        $numIntentos++;
         if ($numCpu == 0) $numCpu = rand(1,100);
         $resultado = self::comprobar($request->num,$numCpu);
-
-        return  view('result',["numCpu" => $numCpu, "numUser" => $request->num, "result" => $resultado, "numIntentos" => $numIntentos]);
+        return  response(
+            view('result',
+            ["numCpu" => $numCpu,
+             "numUser" => $request->num,
+             "result" => $resultado,
+             "numIntentos" => $numIntentos
+        ]));
 
     }
-    public function volver(Request $request)
+     public function elige(Request $request)
     {
-        
-        return view('game');
+        $numIntentos = 0;
+        $numCpu = 0;
+        if ($request->numIntentos) $numIntentos = $request->numIntentos;
+        if ($request->numCpu) $numCpu = $request->numCpu;
+        return view('game',["numCpu" => $numCpu, "numIntentos"=> $numIntentos]);
     }
 
 

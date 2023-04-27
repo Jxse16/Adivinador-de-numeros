@@ -11,13 +11,16 @@
 
     <p>El usuario ha escogido {{$numUser}}</p>
     <p>La CPU ha escogido {{$numCpu}}</p>
+    <p>num Intentos = {{$numIntentos}}</p>
     <p>El resultado es: {{$result[0]}} 
     @isset($result[1])
         <br>{{$result[1]}}
     @endisset
-    <form method="get" action="{{ url('choose') }}">
+    <form method="get" action="{{ url('elige') }}">
         @csrf
-        <button type="submit" name="user" value="{{$user->id}}">Volver a jugar</button>
+        <input hidden name="numIntentos" value="{{$numIntentos}}">
+        <input hidden name="numCpu" value="{{$numCpu}}">
+        <button type="submit">Volver a jugar</button>
     </form>
     </p>
 </body>
