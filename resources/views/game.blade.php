@@ -2,13 +2,12 @@
 body {
   background-image: url('/img/welcome2.png ');
   background-size: cover;
-  font-family: Arial, sans-serif;
+  font-family: Arial
 }
 
 form {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
   width: 500px;
   padding: 20px;
   margin: 50px auto;
