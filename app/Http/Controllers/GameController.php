@@ -76,14 +76,14 @@ class GameController extends Controller
         {
             if ($numUser < $numCpu)
             {
-                $resultado[0] = "El número es menor";
+                $resultado[0] = "El número a adivinar es mayor";
                 $diferencia = $numCpu - $numUser;
-                if ($diferencia < 15) $resultado[1] = "El número está cerca";
+                if ($diferencia < 15) $resultado[1] = "El número a adivinar está cerca";
             } else
             {
-                $resultado[0] = "El número es mayor";
+                $resultado[0] = "El número a adivinar es menor";
                 $diferencia = $numUser - $numCpu;
-                if ($diferencia < 15) $resultado[1] = "El número está cerca";
+                if ($diferencia < 15) $resultado[1] = "El número a adivinar está cerca";
             }
         }
 
